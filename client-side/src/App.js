@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Link, Switch } from "react-router-dom";
 import Home from './Home.js';
 import Login from './login';
+import PlantEdit from './PlantEdit.js';
 
 function App() {
 
@@ -17,6 +18,10 @@ function App() {
         <Link to = '/userlogin'>
           <h5>Login</h5>
         </Link>
+
+        <Link to = '/userlogin'>
+          <h5>Login</h5>
+        </Link>
       </header>
       {/* *******************test*********************** */}
 
@@ -26,6 +31,7 @@ function App() {
         <Route exact path = '/' component = {Home}/>
         {/* <Route path = '/usersignup' component = {Form}/> */}
         <Route path = '/userlogin' component = {Login}/>
+        <Route path = '/plantedit/:id' component = {PlantEdit}/>
       </Switch>
 
       {/* ****************************************** */}
