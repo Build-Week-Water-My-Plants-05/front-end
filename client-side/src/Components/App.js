@@ -3,6 +3,8 @@ import { Route, Link, Switch } from "react-router-dom";
 import Home from './Home.js';
 import Login from './login';
 import PlantEdit from './PlantEdit.js';
+import PrivateRoute from './PrivateRoute.js';
+import '../App.css'
 
 function App() {
 
@@ -28,10 +30,9 @@ function App() {
 
       {/* Here we will display all of the different pages of our app below the header */}
       <Switch>
-        <Route exact path = '/' component = {Home}/>
-        {/* <Route path = '/usersignup' component = {Form}/> */}
         <Route path = '/userlogin' component = {Login}/>
-        <Route path = '/plantedit/:id' component = {PlantEdit}/>
+        <PrivateRoute exact path = '/plantedit/:id' component = {PlantEdit}/>
+        <Route exact path = '/' component = {Home}/>
       </Switch>
 
       {/* ****************************************** */}
