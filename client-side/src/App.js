@@ -1,41 +1,67 @@
 import React from 'react'
+// import AddPlant from './Components/AddPlant';
+// import SignUp from './Components/SignUp';
+
 import { Route, Link, Switch } from "react-router-dom";
-import Home from './Home.js';
-import Login from './login';
-import PlantEdit from './PlantEdit.js';
-import PrivateRoute from './PrivateRoute.js';
-import '../App.css'
+import Home from './Components/Home.js';
+import Login from './Components/login';
+import styled from 'styled-components';
+
+
+const StyledHeader = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #007360;
+height: 20vh;
+padding-left: 3%;
+padding-right: 3%;`
+
+const StyledLink = styled(Link)`
+text-decoration: none;
+color: white;
+text-decoration: underline;
+`;
+
+const StyledAccountButtons = styled.div`
+display: flex;
+justify-content: space-around;
+width: 100px;
+`;
 
 function App() {
 
+
+
   return (
-    <div className="App">
+    <div>
+   
+      <StyledHeader>
 
-      {/*Header to be shown on every page of our website. The idea would be to replace the login and sign up links once the user logged in and only show a message like 'Hello, First Name', but I am not sure how to do that.*/}
-      <header>
-        <Link to = '/'><h1>Watery-Minder</h1></Link>
-        <Link to = '/signup'>
-          <h5>Sign Up!</h5>
-        </Link>
-        <Link to = '/userlogin'>
-          <h5>Login</h5>
-        </Link>
+          <StyledLink to = '/'><h1>Watery-Minder</h1></StyledLink> 
 
-        <Link to = '/userlogin'>
-          <h5>Login</h5>
-        </Link>
-      </header>
-      {/* *******************test*********************** */}
+          <StyledAccountButtons>
 
+            <StyledLink to = '/usersignup'>
+             <h5>Sign Up</h5> 
+            </StyledLink> 
 
-      {/* Here we will display all of the different pages of our app below the header */}
+            <StyledLink to = '/userlogin' >
+            <h5>Login</h5>
+            </StyledLink>
+
+          </StyledAccountButtons>
+
+      </StyledHeader>
+
+      
       <Switch>
-        <Route path = '/userlogin' component = {Login}/>
-        <PrivateRoute exact path = '/plantedit/:id' component = {PlantEdit}/>
         <Route exact path = '/' component = {Home}/>
+        {/* <Route path = '/usersignup' component = {SignUp}/>  */}
+        <Route path = '/userlogin' component = {Login}/>
       </Switch>
 
-      {/* ****************************************** */}
+     
     </div>
   );
 }
