@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import {useParams, useHistory} from "react-router-dom"
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+padding: 5%;
+color: white;
+border: 5px solid white;
+margin 3%;
+`
 
 const initialState ={ 
     name: '',
@@ -7,6 +15,8 @@ const initialState ={
     h2oamount: '',
     species: ''
 }
+
+
 
 const PlantEdit =() => {
     const {id} = useParams()
@@ -16,7 +26,10 @@ const PlantEdit =() => {
         
     },[])
 
-    return(<div className="editpage">
+    return(
+    
+    <StyledDiv >
+    <div className="editpage">
         <h2>Edit Plant Page for plant {id} </h2>
         <form className="editform">
             <label> Name:</label>
@@ -29,7 +42,9 @@ const PlantEdit =() => {
 <input type="text" name="h2ointerval" value={plant.h2ointerval}/>
 
              </form>
-    </div>)
+    </div>
+    </StyledDiv>
+    )
 }
 
 export default PlantEdit

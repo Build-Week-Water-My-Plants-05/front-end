@@ -1,10 +1,10 @@
 import React from 'react'
-// import AddPlant from './Components/AddPlant';
-// import SignUp from './Components/SignUp';
+import AddPlant from './AddPlant';
+import SignUp from './SignUp';
 
 import { Route, Link, Switch } from "react-router-dom";
-import Home from './Components/Home.js';
-import Login from './Components/login';
+import Home from './Home.js';
+import Login from './login';
 import styled from 'styled-components';
 
 
@@ -57,7 +57,7 @@ function App() {
       
       <Switch>
         <Route exact path = '/' component = {Home}/>
-        {/* <Route path = '/usersignup' component = {SignUp}/>  */}
+        <Route path = '/usersignup' component = {SignUp}/> 
         <Route path = '/userlogin' component = {Login}/>
       </Switch>
 
