@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch,Redirect } from "react-router-dom";
 import Home from './Components/Home.js';
 import Login from './Components/login';
 import PlantEdit from './Components/PlantEdit.js';
