@@ -1,34 +1,66 @@
-import React from 'react'
+import React from 'react';
 import { Route, Link, Switch } from "react-router-dom";
 import Home from './Home.js';
 import Login from './login';
+import styled from 'styled-components';
+
+
+const StyledHeader = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #007360;
+height: 20vh;
+padding-left: 3%;
+padding-right: 3%
+`;
+
+const StyledLink = styled(Link)`
+text-decoration: none;
+color: white;
+text-decoration: underline;
+`;
+
+const StyledAccountButtons = styled.div`
+display: flex;
+justify-content: space-around;
+width: 100px;
+`;
+
 
 function App() {
 
+
+
   return (
-    <div className="App">
+    <div>
+   
+      <StyledHeader>
 
-      {/*Header to be shown on every page of our website. The idea would be to replace the login and sign up links once the user logged in and only show a message like 'Hello, First Name', but I am not sure how to do that.*/}
-      <header>
-        <Link to = '/'><h1>Watery-Minder</h1></Link>
-        <Link to = '/signup'>
-          <h5>Sign Up!</h5>
-        </Link>
-        <Link to = '/userlogin'>
-          <h5>Login</h5>
-        </Link>
-      </header>
-      {/* *******************test*********************** */}
+          <StyledLink to = '/'><h1>Watery-Minder</h1></StyledLink> 
 
+          <StyledAccountButtons>
 
-      {/* Here we will display all of the different pages of our app below the header */}
+            <StyledLink to = '/signup'>
+             <h5>Sign Up</h5> 
+            </StyledLink> 
+
+            <StyledLink to = '/userlogin' >
+            <h5>Login</h5>
+            </StyledLink>
+
+          </StyledAccountButtons>
+
+      </StyledHeader>
+
+      
       <Switch>
         <Route exact path = '/' component = {Home}/>
         {/* <Route path = '/usersignup' component = {Form}/> */}
         <Route path = '/userlogin' component = {Login}/>
       </Switch>
 
-      {/* ****************************************** */}
+     
     </div>
   );
 }
