@@ -6,23 +6,23 @@ export default function AddPlant (props){
     const [waterNeeds, setWaterNeeds] = useState('')
     const [time, setTime] = useState('')
 
-    const onSubmit = (e) => {
-        e.preventDefault()
+    // const onSubmit = (e) => {
+    //     e.preventDefault()
 
-        if(!plantName) {
-            alert('Please add a Plant')
-            return
-        }
-        onAdd({plantName,nickName,waterNeeds,time})
+    //     if(!plantName) {
+    //         alert('Please add a Plant')
+    //         return
+    //     }
+    //     onAdd({plantName,nickName,waterNeeds,time})
 
-        setPlantName('')
-        setNickName('')
-        setWaterNeeds('')
-        setTime('')
-    }
+    //     setPlantName('')
+    //     setNickName('')
+    //     setWaterNeeds('')
+    //     setTime('')
+    // }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form /*onSubmit={onSubmit} working on this again later*/ >
             <div>
                 <label>Plant Name</label>
                 {//could try and bring in the plant name dynamically here from an API, maybe based on user input or add the correct name to the plant list once user submits their plant
