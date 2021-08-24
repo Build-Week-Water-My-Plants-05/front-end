@@ -1,10 +1,10 @@
 import React from 'react'
-import { Route, Link, Switch,Redirect } from "react-router-dom";
-import Home from './Components/Home.js';
-import Login from './Components/login';
-import PlantEdit from './Components/PlantEdit.js';
-import PrivateRoute from './Components/PrivateRoute.js';
-import './App.css'
+import { Route, Link, Switch } from "react-router-dom";
+import Home from './Home.js';
+import Login from './login';
+import PlantEdit from './PlantEdit.js';
+import PrivateRoute from './PrivateRoute.js';
+import '../App.css'
 
 function App() {
 
