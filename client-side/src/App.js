@@ -1,4 +1,6 @@
 import React from 'react'
+import AddPlant from './Add Plant';
+import SignUp from './Sign Up';
 
 function App() {
   return (
