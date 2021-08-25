@@ -109,6 +109,10 @@ const Login = () => {
     }, [formValues]);
 
 
+const Login = (props) => {
+
+    const {formvalues,change,submit} = props
+
 
     return (
     <StyledDiv>
@@ -122,15 +126,19 @@ const Login = () => {
                 </div>
                 {/* Just setting up the basic set up for my user login page */}
                     <h2>Connect With Your Plants</h2>
-                    <StyledForm>
+                    <StyledForm onSubmit={(e)=>submit(e)}>
                         <StyledEntryBoxes>
                         <label> Username: 
+
                             <input 
                                 name = 'username'
                                 value = {formValues.username}
                                 type = 'text' 
                                 placeholder = ''
                                 onChange ={change}></input>
+
+                            <input type ='text' name ="username" placeholder = ''  value={formvalues.username} onChange={(e)=>change(e)}></input>
+
                         </label>
                         {disabled && <div style = {
                             {marginTop: '5px',
@@ -140,12 +148,16 @@ const Login = () => {
                             width: '75.2%',
                             border: '1px solid red'}}>{errors.username}</div>}
                         <label>Password: 
+
                             <input 
                                 name = 'password'
                                 value = {formValues.password}
                                 type = 'text' 
                                 placeholder = 'Case Sensitive'
                                 onChange = {change} ></input>
+
+                        <input type = 'password' name="password" placeholder = 'Case Sensitive'  value={formvalues.password} onChange={(e)=>change(e)}></input>
+
                         </label>
                         </StyledEntryBoxes>
                         <button type = 'submit'>Login!</button>
