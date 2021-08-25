@@ -60,7 +60,7 @@ function App() {
         <Route exact path = '/' component = {Home}/>
         <Route path = '/usersignup' component = {SignUp}/> 
         <Route path = '/userlogin' component = {Login}/>
-        <Route path = '/editplant/:id' component = {PlantEdit}/>
+        <Route path = '/edit/:id' component = {PlantEdit}/>
       </Switch>
 
      
