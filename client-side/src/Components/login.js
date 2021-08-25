@@ -83,7 +83,7 @@ const Login = () => {
     //Set up or slices of state//
     const [ formValues, setFormValues ] = useState(initialFormValues);
     const [ errors, setErrors ] = useState(initialFormValues);
-    const [ disabledUsername, setDisabledUsername ] = useState(false);
+    const [ disabled, setDisabled ] = useState(false);
     // const [ disabledPassword, setDisabledPassword ] = useState(true);
 
     //Function that validates form entries according to the schema which can be found above//
@@ -101,9 +101,9 @@ const Login = () => {
     }
 
     useEffect(()=>{
-        loginSchema.isValid(formValues.username)
+        loginSchema.isValid(formValues)
         .then(valid => {
-            setDisabledUsername(!valid)
+            setDisabled(!valid)
             console.log(valid)
     })
     }, [formValues]);
@@ -132,7 +132,7 @@ const Login = () => {
                                 placeholder = ''
                                 onChange ={change}></input>
                         </label>
-                        {disabledUsername && <div style = {
+                        {disabled && <div style = {
                             {marginTop: '5px',
                             marginBottom: '5px',
                             color: 'red',
