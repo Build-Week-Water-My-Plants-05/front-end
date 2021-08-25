@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
+import axiosWithAuth from '../axiosWithAuth/axiosWithAuth';
 
 
 const StyledDiv = styled.div`
@@ -54,6 +55,7 @@ export default function AddPlant (){
 
     const handlePlantAdded = (e) => {
         // alert('Plant added')
+        axiosWithAuth().post
         e.preventDefault()
         console.log(plant)
         return setPlant(

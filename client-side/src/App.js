@@ -109,22 +109,15 @@ const logout = ()=> {
           </StyledAccountButtons>
 
       </StyledHeader>
-
       
       <Switch>
         <Route exact path = '/' component = {Home}/>
         <Route path = '/usersignup'   render={() => <SignUp submit = {submit} formvalues = {formvalues} change = {change}  />}/>
         <Route path = '/userlogin'   render={() => <Login submit = {submit} formvalues = {formvalues} change = {change}  />}/>
         <PrivateRoute path = '/edit/:id' component = {PlantEdit}/>
-        
-
-        <Route path = '/usersignup' component = {SignUp}/> 
-        <Route path = '/userlogin' component = {Login}/>
         <PrivateRoute path = '/addplant' component = {AddPlant}/>
         <PrivateRoute path = '/dashboard' component = {Dashboard}/>
         
-        <Route path = '/edit/:id' component = {PlantEdit}/>
-
       </Switch>
 
      
