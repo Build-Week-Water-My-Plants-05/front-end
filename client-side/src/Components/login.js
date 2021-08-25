@@ -70,49 +70,48 @@ const initialFormValues = {
     password: '',
 }
 
-const loginSchema = yup.object().shape({
-    username : yup.string().required().min('4', 'Username must be at least 4 characters in length'),
-    password : yup.string().required().matches(
-        /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-        "Password must contain at least 8 characters one uppercase, one number and one special case character"
-      ),
-})
+// const loginSchema = yup.object().shape({
+//     username : yup.string().required().min('4', 'Username must be at least 4 characters in length'),
+//     password : yup.string().required().matches(
+//         /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+//         "Password must contain at least 8 characters one uppercase, one number and one special case character"
+//       ),
+// })
 
 
-const Login = () => {
-    //Set up or slices of state//
-    const [ formValues, setFormValues ] = useState(initialFormValues);
-    const [ errors, setErrors ] = useState(initialFormValues);
-    const [ disabled, setDisabled ] = useState(false);
-    // const [ disabledPassword, setDisabledPassword ] = useState(true);
+// const Login = () => {
+//     //Set up or slices of state//
+//     const [ formValues, setFormValues ] = useState(initialFormValues);
+//     const [ errors, setErrors ] = useState(initialFormValues);
+//     const [ disabled, setDisabled ] = useState(false);
+//     // const [ disabledPassword, setDisabledPassword ] = useState(true);
 
-    //Function that validates form entries according to the schema which can be found above//
-    const setFormErrors = (name, value) => {
-        yup.reach(loginSchema, name).validate(value)
-        .then(() => setErrors({...errors,[name]:''}))
-        .catch(err => setErrors({...errors, [name]:err.errors[0]}))
-    }
+//     //Function that validates form entries according to the schema which can be found above//
+//     const setFormErrors = (name, value) => {
+//         yup.reach(loginSchema, name).validate(value)
+//         .then(() => setErrors({...errors,[name]:''}))
+//         .catch(err => setErrors({...errors, [name]:err.errors[0]}))
+//     }
 
-    //Function that handles form changes and updates the form and errors//
-    const change = event => {
-        const {value,name} = event.target;
-        setFormErrors(name,value);
-        setFormValues({...formValues, [name]:value});
-    }
+//     //Function that handles form changes and updates the form and errors//
+//     const change = event => {
+//         const {value,name} = event.target;
+//         setFormErrors(name,value);
+//         setFormValues({...formValues, [name]:value});
+//     }
 
-    useEffect(()=>{
-        loginSchema.isValid(formValues)
-        .then(valid => {
-            setDisabled(!valid)
-            console.log(valid)
-    })
-    }, [formValues]);
+//     useEffect(()=>{
+//         loginSchema.isValid(formValues)
+//         .then(valid => {
+//             setDisabled(!valid)
+//             console.log(valid)
+//     })
+//     }, [formValues]);
 
 
 const Login = (props) => {
 
     const {formvalues,change,submit} = props
-
 
     return (
     <StyledDiv>
@@ -130,31 +129,31 @@ const Login = (props) => {
                         <StyledEntryBoxes>
                         <label> Username: 
 
-                            <input 
+                            {/* <input 
                                 name = 'username'
-                                value = {formValues.username}
+                                value = {formvalues.username}
                                 type = 'text' 
                                 placeholder = ''
-                                onChange ={change}></input>
+                                onChange ={change}></input> */}
 
                             <input type ='text' name ="username" placeholder = ''  value={formvalues.username} onChange={(e)=>change(e)}></input>
 
                         </label>
-                        {disabled && <div style = {
+                        {/* {disabled && <div style = {
                             {marginTop: '5px',
                             marginBottom: '5px',
                             color: 'red',
                             backgroundColor: 'pink',
                             width: '75.2%',
-                            border: '1px solid red'}}>{errors.username}</div>}
+                            border: '1px solid red'}}>{errors.username}</div>} */}
                         <label>Password: 
 
-                            <input 
+                            {/* <input 
                                 name = 'password'
-                                value = {formValues.password}
+                                value = {formvalues.password}
                                 type = 'text' 
                                 placeholder = 'Case Sensitive'
-                                onChange = {change} ></input>
+                                onChange = {change} ></input> */}
 
                         <input type = 'password' name="password" placeholder = 'Case Sensitive'  value={formvalues.password} onChange={(e)=>change(e)}></input>
 

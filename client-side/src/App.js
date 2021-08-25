@@ -1,10 +1,10 @@
-import React from 'react'
-import SignUp from './SignUp';
+import React from 'react';
 import AddPlant from './Components/AddPlant';
 import axios from 'axios';
 import SignUp from './Components/SignUp';
 import { useState, useEffect } from 'react';
 import PlantEdit from './Components/PlantEdit';
+import Dashboard from './Components/dashboard';
 import PrivateRoute from './Components/PrivateRoute'
 import {
   Switch,
@@ -18,7 +18,7 @@ import {
 import Home from './Components/Home.js';
 import Login from './Components/login';
 import styled from 'styled-components';
-import AddPlant from './AddPlant';
+
 
 
 const StyledHeader = styled.div`
@@ -120,7 +120,9 @@ const logout = ()=> {
 
         <Route path = '/usersignup' component = {SignUp}/> 
         <Route path = '/userlogin' component = {Login}/>
-        <Route path = '/addplant' component = {AddPlant}/>
+        <PrivateRoute path = '/addplant' component = {AddPlant}/>
+        <PrivateRoute path = '/dashboard' component = {Dashboard}/>
+        
         <Route path = '/edit/:id' component = {PlantEdit}/>
 
       </Switch>

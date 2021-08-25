@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axiosWithAuth from './axiosWithAuth/axiosWithAuth';
 import styled from 'styled-components'
 import { Link, useHistory, Route } from "react-router-dom";
-import HomeImage from "./../img/img2.jpg"
+import HomeImage from "./img/img2.jpg"
 
 
 const Dashboard = (props) => {
