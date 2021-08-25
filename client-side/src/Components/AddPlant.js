@@ -39,11 +39,13 @@ const StyledEntryBoxes = styled.div`
     height: 100px;
 `
 
+
 const initialValues = {
-    plantName: '',
-    nickName: '',
-    waterAmount: '',
-    waterFrequency: '',
+    speciesID: '',
+    h2oInterval: '', 
+    h2oAmount: '',
+    nickname: '',
+    userID: '',
 }
 
 export default function AddPlant (){
@@ -51,11 +53,11 @@ export default function AddPlant (){
 
     const handleInput = e => {
         setPlant({...plant, [e.target.name]: e.target.value})
-    }   
+    }
 
     const handlePlantAdded = (e) => {
         // alert('Plant added')
-        axiosWithAuth().post
+        // axiosWithAuth().post
         e.preventDefault()
         console.log(plant)
         return setPlant(
