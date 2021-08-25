@@ -56,7 +56,7 @@ export default function AddPlant (){
 
     const handlePlantAdded = (e) => {
         // alert('Plant added')
-        axiosWithAuth().post
+        axiosWithAuth('/api/plant').post(plant)
         e.preventDefault()
         return setPlant(
             initialValues
