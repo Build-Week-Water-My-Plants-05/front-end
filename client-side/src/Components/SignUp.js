@@ -39,62 +39,36 @@ const StyledEntryBoxes = styled.div`
 `
 
 export default function SignUp (props){
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
+    const {formvalues,change,submit} = props
 
-    // const onSubmit = (e) => {
-    //     e.preventDefault()
 
-    //     if(!username) {
-    //         alert('Please add an username')
-    //         return
-    //     }
-    //     onAdd({username, password, phoneNumber})
-
-    //     setUsername('')
-    //     setPassword('')
-    //     setPhoneNumber('')
-    // }
 
     return (
         <StyledDiv>
-            <Route exact path = '/usersignup'>
                 <StyledCard>
-                    <StyledForm>
+                    <StyledForm onSubmit={submit}>
                         <StyledEntryBoxes>
                             <div>
                             <label>Username:</label>
                                 <input 
-                                    type='text'
-                                    placeholder='username goes here'
-                                    value={username}
-                                    onChange={(e)=>setUsername(e.target.value)}
-                                />
+                      name ="username" type="text" value={formvalues.username} onChange={(e)=>change(e)} />
                             </div>
                             <div>
                                 <label>Password:</label>
                                 <input 
-                                type='text'
-                                placeholder='case sensitive'
-                                value={password}
-                                onChange={(e)=>setPassword(e.target.value)}
+                         name="password" type="password" value={formvalues.password} onChange={(e)=>change(e)}
                                 />
                             </div>
                             <div>
                                 <label>Phone Number:</label>
                                 <input 
-                                type='text'
-                                placeholder='xxx-xxx-xxxx'
-                                value={phoneNumber}
-                                onChange={(e)=>setPhoneNumber(e.target.value)}
+                               name="phoneNumber" type="text" value={formvalues.phoneNumber} onChange={(e)=>change(e)}
                                 />
                             </div>
                         </StyledEntryBoxes>
                         <input type='submit' value="Create User"/>
                     </StyledForm>
                 </StyledCard>
-            </Route>
         </StyledDiv>
     )
 } 
