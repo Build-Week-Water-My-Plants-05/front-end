@@ -5,7 +5,7 @@ const axiosWithAuth = () => {
 		headers: {
 			Authorization: token,
 		},
-		baseURL: "WE DON'T HAVE", //we don't have a baseURL
+		baseURL: "https://wmp-api.herokuapp.com/",
 	});
 };
 
