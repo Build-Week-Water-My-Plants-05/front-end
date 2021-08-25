@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import axiosWithAuth from '../axiosWithAuth/axiosWithAuth';
+import {useHistory} from "react-router-dom"
 
 
 const StyledDiv = styled.div`
@@ -39,6 +40,7 @@ const StyledEntryBoxes = styled.div`
     height: 100px;
 `
 
+
 const initialValues = {
     speciesID: '',
     h2oInterval: '', 
@@ -49,18 +51,20 @@ const initialValues = {
 
 export default function AddPlant (){
     const [plant,setPlant] = useState(initialValues)
+    const {push} = useHistory()
 
     const handleInput = e => {
         setPlant({...plant, [e.target.name]: e.target.value})
-    }   
+    }
 
     const handlePlantAdded = (e) => {
-        // alert('Plant added')
-        axiosWithAuth('/api/plant').post(plant)
         e.preventDefault()
-        return setPlant(
-            initialValues
+        axiosWithAuth().post('/api/plant',plant)
+        .then(
+            setPlant(plant),
+            push('/dashboard')
             )
+        .catch(e=>console.log(e))
     }
 
     return (
