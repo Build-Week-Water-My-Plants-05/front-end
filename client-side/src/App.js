@@ -1,11 +1,11 @@
 import React from 'react'
-import AddPlant from './AddPlant';
 import SignUp from './SignUp';
 
 import { Route, Link, Switch } from "react-router-dom";
 import Home from './Home.js';
 import Login from './login';
 import styled from 'styled-components';
+import AddPlant from './AddPlant';
 
 
 const StyledHeader = styled.div`
@@ -50,6 +50,10 @@ function App() {
             <h5>Login</h5>
             </StyledLink>
 
+            <StyledLink to = '/addplant' >
+            <h5>Add Plant</h5>
+            </StyledLink>
+
           </StyledAccountButtons>
 
       </StyledHeader>
@@ -59,6 +63,7 @@ function App() {
         <Route exact path = '/' component = {Home}/>
         <Route path = '/usersignup' component = {SignUp}/> 
         <Route path = '/userlogin' component = {Login}/>
+        <Route path = '/addplant' component = {AddPlant}/>
       </Switch>
 
      

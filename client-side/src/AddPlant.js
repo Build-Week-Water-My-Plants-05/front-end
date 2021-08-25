@@ -14,7 +14,7 @@ const StyledCard = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
-align-items: center;
+align-items: flex-start;
 background-color: ghostwhite;
 width : 350px;
 height: 70%;
@@ -27,7 +27,7 @@ const StyledForm = styled.form`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 150px;
+    height: 200px;
     font-weight: bolder;
     width: 300px;
 `;
@@ -38,26 +38,28 @@ const StyledEntryBoxes = styled.div`
     height: 100px;
 `
 
-export default function AddPlant (props){
-    const [plantName, setPlantName] = useState('')
-    const [nickName, setNickName] = useState('')
-    const [waterNeeds, setWaterNeeds] = useState('')
-    const [time, setTime] = useState('')
+const initialValues = {
+    plantName: '',
+    nickName: '',
+    waterAmount: '',
+    waterFrequency: '',
+}
 
-    // const onSubmit = (e) => {
-    //     e.preventDefault()
+export default function AddPlant (){
+    const [plant,setPlant] = useState(initialValues)
 
-    //     if(!plantName) {
-    //         alert('Please add a Plant')
-    //         return
-    //     }
-    //     onAdd({plantName,nickName,waterNeeds,time})
+    const handleInput = e => {
+        setPlant({...plant, [e.target.name]: e.target.value})
+    }   
 
-    //     setPlantName('')
-    //     setNickName('')
-    //     setWaterNeeds('')
-    //     setTime('')
-    // }
+    const handlePlantAdded = (e) => {
+        // alert('Plant added')
+        e.preventDefault()
+        console.log(plant)
+        return setPlant(
+            initialValues
+            )
+    }
 
     return (
         <StyledDiv>
@@ -66,37 +68,42 @@ export default function AddPlant (props){
                     <StyledForm>
                         <StyledEntryBoxes>
                         <div>
-                            <label>Plant Name</label>
+                            <label>Plant Name:</label>
                 {//could try and bring in the plant name dynamically here from an API, maybe based on user input or add the correct name to the plant list once user submits their plant
                     }   
                                 <input type='text'
-                                    placeholder='plant name here'
-                                    value={plantName}
-                                    onChange={(e)=>setPlantName(e.target.value)}/>
+                                    name='plantName'
+                                    placeholder=''
+                                    value={plant.plantName}
+                                    onChange={handleInput}/>
                         </div>
                         <div>
-                            <label>Nickname for your Plant</label>
-                            <input type='text'
-                            placeholder='nickname for your plant'
-                            value={nickName}
-                            onChange={(e)=>setNickName(e.target.value)}/>
+                            <label>Plant's Nickname:</label>
+                                <input type='text'
+                                name='nickName'
+                                placeholder=''
+                                value={plant.nickName}
+                                onChange={handleInput}/>
                         </div>
                         <div>
-                            <label>Amount of Water Plant Needs</label>
-                            <input type='text'
-                            placeholder='plant name here'
-                            value={waterNeeds}
-                            onChange={(e)=>setWaterNeeds(e.target.value)}/>
+                            <label>Watering Amount: </label>
+                                <input type='text'
+                                name='waterAmount'
+                                placeholder='# of liters'
+                                value={plant.waterAmount}
+                                onChange={handleInput}/>
                         </div>
                         <div>
-                            <label></label>
-                            <input type='text'
-                            placeholder='plant name here'
-                            value={time}
-                            onChange={(e)=>setTime(e.target.value)}/>
+                            <label>Watering Frequency:</label>
+                                <input type='text'
+                                name='waterFrequency'
+                                placeholder='# of days'
+                                value={plant.waterFrequency}
+                                onChange={handleInput}/>
                         </div>
                         </StyledEntryBoxes>
-                        <input type='submit' value='Save Plant' />
+
+                        <input type='submit' value='Save Plant' onClick={handlePlantAdded}/>
                     </StyledForm>
                 </StyledCard>
             </Route>
