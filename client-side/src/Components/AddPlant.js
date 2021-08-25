@@ -40,10 +40,11 @@ const StyledEntryBoxes = styled.div`
 `
 
 const initialValues = {
-    plantName: '',
-    nickName: '',
-    waterAmount: '',
-    waterFrequency: '',
+    speciesID: '',
+    h2oInterval: '', 
+    h2oAmount: '',
+    nickname: '',
+    userID: '',
 }
 
 export default function AddPlant (){
@@ -57,7 +58,6 @@ export default function AddPlant (){
         // alert('Plant added')
         axiosWithAuth().post
         e.preventDefault()
-        console.log(plant)
         return setPlant(
             initialValues
             )
@@ -74,33 +74,33 @@ export default function AddPlant (){
                 {//could try and bring in the plant name dynamically here from an API, maybe based on user input or add the correct name to the plant list once user submits their plant
                     }   
                                 <input type='text'
-                                    name='plantName'
+                                    name='speciesID'
                                     placeholder=''
-                                    value={plant.plantName}
+                                    value={plant.speciesID}
                                     onChange={handleInput}/>
                         </div>
                         <div>
                             <label>Plant's Nickname:</label>
                                 <input type='text'
-                                name='nickName'
+                                name='nickname'
                                 placeholder=''
-                                value={plant.nickName}
+                                value={plant.nickname}
                                 onChange={handleInput}/>
                         </div>
                         <div>
                             <label>Watering Amount: </label>
                                 <input type='text'
-                                name='waterAmount'
+                                name='h2oAmount'
                                 placeholder='# of liters'
-                                value={plant.waterAmount}
+                                value={plant.h2oAmount}
                                 onChange={handleInput}/>
                         </div>
                         <div>
                             <label>Watering Frequency:</label>
                                 <input type='text'
-                                name='waterFrequency'
+                                name='h2oInterval'
                                 placeholder='# of days'
-                                value={plant.waterFrequency}
+                                value={plant.h2oInterval}
                                 onChange={handleInput}/>
                         </div>
                         </StyledEntryBoxes>
