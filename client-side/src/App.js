@@ -1,6 +1,7 @@
 import React from 'react'
 import AddPlant from './AddPlant';
 import SignUp from './SignUp';
+import PlantEdit from './PlantEdit';
 
 import { Route, Link, Switch } from "react-router-dom";
 import Home from './Home.js';
@@ -59,6 +60,7 @@ function App() {
         <Route exact path = '/' component = {Home}/>
         <Route path = '/usersignup' component = {SignUp}/> 
         <Route path = '/userlogin' component = {Login}/>
+        <Route path = '/editplant/:id' component = {PlantEdit}/>
       </Switch>
 
      
