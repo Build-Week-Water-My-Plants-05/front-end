@@ -1,4 +1,4 @@
-import {Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import UserAvatar from './img/img1.jpg';
 
