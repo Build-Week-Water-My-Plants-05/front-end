@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {useParams, useHistory} from "react-router-dom"
 import styled from 'styled-components';
+import axiosWithAuth from './axiosWithAuth/axiosWithAuth';
 
 const StyledDiv = styled.div`
 padding: 5%;
@@ -22,9 +23,17 @@ const PlantEdit =() => {
     const {id} = useParams()
     const [plant, setPlant] = useState(initialState)
 
-    useEffect(()=>{
-        
-    },[])
+    useEffect(() => {
+        axiosWithAuth()
+            // .get(`/api/plants/${id}`)
+            .get(`https://wmp-api.herokuapp.com/api/plants/${id}`)  
+            .then(res => {
+                setPlant(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
 
     return(
     
