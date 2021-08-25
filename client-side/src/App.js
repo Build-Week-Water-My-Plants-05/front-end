@@ -1,4 +1,5 @@
 import React from 'react'
+import SignUp from './SignUp';
 import AddPlant from './Components/AddPlant';
 import SignUp from './Components/SignUp';
 import PlantEdit from './Components/PlantEdit';
@@ -7,6 +8,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import Home from './Components/Home.js';
 import Login from './Components/login';
 import styled from 'styled-components';
+import AddPlant from './AddPlant';
 
 
 const StyledHeader = styled.div`
@@ -51,6 +53,10 @@ function App() {
             <h5>Login</h5>
             </StyledLink>
 
+            <StyledLink to = '/addplant' >
+            <h5>Add Plant</h5>
+            </StyledLink>
+
           </StyledAccountButtons>
 
       </StyledHeader>
@@ -60,6 +66,7 @@ function App() {
         <Route exact path = '/' component = {Home}/>
         <Route path = '/usersignup' component = {SignUp}/> 
         <Route path = '/userlogin' component = {Login}/>
+        <Route path = '/addplant' component = {AddPlant}/>
         <Route path = '/edit/:id' component = {PlantEdit}/>
       </Switch>
 

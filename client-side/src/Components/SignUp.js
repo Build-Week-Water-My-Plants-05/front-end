@@ -37,25 +37,23 @@ const StyledEntryBoxes = styled.div`
     justify-content: space-around;
     height: 100px;
 `
+const initialValues = {
+    username: '',
+    password: '',
+    phoneNumber: '',
+}
 
 export default function SignUp (props){
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
+    const [newUser, setNewUser] = useState(initialValues)
 
-    // const onSubmit = (e) => {
-    //     e.preventDefault()
-
-    //     if(!username) {
-    //         alert('Please add an username')
-    //         return
-    //     }
-    //     onAdd({username, password, phoneNumber})
-
-    //     setUsername('')
-    //     setPassword('')
-    //     setPhoneNumber('')
-    // }
+    const handleInput = e => {
+        setNewUser({...newUser, [e.target.name]: e.target.value})
+    }
+    const createUserSubmit = e => {
+        e.preventDefault()
+        console.log(newUser)
+        return setNewUser(initialValues)
+    }
 
     return (
         <StyledDiv>
@@ -67,18 +65,20 @@ export default function SignUp (props){
                             <label>Username:</label>
                                 <input 
                                     type='text'
-                                    placeholder='username goes here'
-                                    value={username}
-                                    onChange={(e)=>setUsername(e.target.value)}
+                                    placeholder=''
+                                    name='username'
+                                    value={newUser.username}
+                                    onChange={handleInput}
                                 />
                             </div>
                             <div>
                                 <label>Password:</label>
                                 <input 
                                 type='text'
-                                placeholder='case sensitive'
-                                value={password}
-                                onChange={(e)=>setPassword(e.target.value)}
+                                placeholder='Case Sensitive'
+                                name='password'
+                                value={newUser.password}
+                                onChange={handleInput}
                                 />
                             </div>
                             <div>
@@ -86,12 +86,13 @@ export default function SignUp (props){
                                 <input 
                                 type='text'
                                 placeholder='xxx-xxx-xxxx'
-                                value={phoneNumber}
-                                onChange={(e)=>setPhoneNumber(e.target.value)}
+                                name='phoneNumber'
+                                value={newUser.phoneNumber}
+                                onChange={handleInput}
                                 />
                             </div>
                         </StyledEntryBoxes>
-                        <input type='submit' value="Create User"/>
+                        <input type='submit' value="Create User" onClick={createUserSubmit}/>
                     </StyledForm>
                 </StyledCard>
             </Route>
