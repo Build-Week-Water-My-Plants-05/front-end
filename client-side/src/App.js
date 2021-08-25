@@ -1,11 +1,11 @@
 import React from 'react'
-import AddPlant from './AddPlant';
-import SignUp from './SignUp';
-import PlantEdit from './PlantEdit';
+import AddPlant from './Components/AddPlant';
+import SignUp from './Components/SignUp';
+import PlantEdit from './Components/PlantEdit';
 
 import { Route, Link, Switch } from "react-router-dom";
-import Home from './Home.js';
-import Login from './login';
+import Home from './Components/Home.js';
+import Login from './Components/login';
 import styled from 'styled-components';
 
 
