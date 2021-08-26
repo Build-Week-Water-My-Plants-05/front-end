@@ -1,7 +1,9 @@
 # front-end
-👀 Product Vision Document
+👀 🎆 🎆 Product Vision Document 🎆 🎆 👀
 This is the template for the Product Vision Document that teams complete after their initial icebreaker. The PVD is crucial to the planning phase and is mandatory for all groups to complete before starting their project.
-☝️ Proposal
+
+
+☝️☝️☝️☝️☝️ Proposal ☝️☝️☝️☝️☝️☝️
 
 What problem does your app solve?	
 Many people have a hard time forming habits that stick. This niche app will hopefully help form the habit of watering any household plant on a regular basis! The user will be able to sign up, input their information and their plants information in order to keep track of how often and how much water the plant will need.
@@ -10,7 +12,7 @@ The user will be able to sign up, input their information and their plants infor
 What is the mission statement?
 	Don’t let your plants die of thirst
 
-💡 Features
+💡💡💡 Features 💡💡💡
 
 What features are required for your minimum viable product?
 User can create a username and password  - Log In Page 
@@ -31,7 +33,7 @@ They recognize what plant species from a picture
 Give us more general info on the plant. 
 Other habit tracking apps give a positive feedback to their user for meeting their habit
 
-🛠 Frameworks - Libraries
+🛠🛠🛠 Frameworks - Libraries 🛠🛠🛠
 
 What 3rd party frameworks/libraries are you considering using?
 React
@@ -42,13 +44,13 @@ No
 Are you required to pay to use said API(s)?
 No
 
-🧮 For Data Scientists
+🧮 🧮 🧮 For Data Scientists 🧮 🧮 🧮
 
 Describe the established data source with at least rough data able to be provided on day one.
 
 Write a description for what the data science problem is. What uncertainty or prediction are you trying to discover? How could this data be used to find a solution to this problem?
 
-🎯 Target Audience
+🎯 🎯 🎯 Target Audience 🎯 🎯 🎯
 
 Who is your target audience? Be specific.
 		Plant Parents, Botanists, Plant Stores, Ecology Students, Conservationists
@@ -64,7 +66,7 @@ Have you validated this problem and your solution with a target audience? Descri
 		
 
 
-🔑 Prototype Key Feature(s)
+🔑 🔑 🔑 Prototype Key Feature(s) 🔑 🔑 🔑
 
 How long do you think it will take to implement these features?
 	By Friday @ 9AM PT
