@@ -53,7 +53,8 @@ color: #d9d6d6;
 const initialformvalues = {username: '', password: '',phoneNumber: ''}
 function App() {
   const [formvalues,setFormValues] = useState(initialformvalues)
-  const[loggedin, setLoggedin] = useState(false) 
+  const[loggedin, setLoggedin] = useState(false)
+  const[trigger, setTrigger] = useState(false) 
   let history = useHistory();
   let location = useLocation();
   const [user,setUser] = useState(null)
@@ -108,6 +109,10 @@ useEffect(()=>{
 }
 , [])
 
+useEffect(()=> {
+setTrigger(!trigger)
+}, [loggedin])
+
   return (
     <div>
    
@@ -147,7 +152,7 @@ useEffect(()=>{
       <Switch>
         <Route exact path = '/' component = {Home}/>
         <Route path = '/usersignup'   render={() => <SignUp submit = {submit} formvalues = {formvalues} change = {change}  />}/>
-        <Route path = '/userlogin'   render={() => <Login/>}/>
+        <Route path = '/userlogin'   render={() => <Login setLoggedin={setLoggedin}/>}/>
         <PrivateRoute path = '/edit/:id' component = {PlantEdit}/>
         <PrivateRoute path = '/useredit/' setUser={setUser} component = {UserEdit}/>
         <PrivateRoute path = '/addplant' component = {AddPlant}/>
