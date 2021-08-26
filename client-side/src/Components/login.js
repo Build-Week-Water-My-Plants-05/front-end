@@ -9,7 +9,7 @@ YupPassword(yup);
 
 
 const StyledDiv = styled.div`
-    height: 80vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,10 +23,14 @@ const StyledCard = styled.div`
     align-items: center;
     background-color: ghostwhite;
     width : 350px;
-    height: 70%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: 2%;
     border: 5px solid #007360;
     color: #007360;
+    .loginerr{
+        background-color: red;
+    }
 `;
 
 const GreenCircle = styled.div`
@@ -53,16 +57,36 @@ const StyledForm = styled.form`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 200px;
+
     font-weight: bolder;
     width: 300px;
+    button[type="submit"] {
+        background-color: #007360;
+padding: 0.8rem;
+color: white;
+border: none;
+font-weight: bold;
+cursor: pointer;
+    }
+    .errormessage{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: red;
+    background-color: pink;
+    width: 75.2%
+    }
 `;
 
 const StyledEntryBoxes = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100px;
+    input{
+        margin-top: 0.4rem;
+margin-bottom: 1rem;
+    }
+
+
 `
 
 const initialFormValues = {
@@ -88,6 +112,7 @@ const Login = (props) => {
     //     //Set up or slices of state//
     const [ formValues, setFormValues ] = useState(initialFormValues);
     const [ errors, setErrors ] = useState(initialFormValues);
+    const[loginerr, setloginerr] = useState(null)
     let history = useHistory();
 
     //Function that validates form entries according to the schema which can be found above//
@@ -114,7 +139,7 @@ const Login = (props) => {
           localStorage.setItem('token', `"${token}"`);
           props.setLoggedin(true)
           history.push('/dashboard')
-        }).catch( err => console.log(err.response.data['message']))
+        }).catch( err => setloginerr(err.response.data['message']))
       }
 
     return (
@@ -129,41 +154,31 @@ const Login = (props) => {
                 </div>
                 {/* Just setting up the basic set up for my user login page */}
                     <h2>Connect With Your Plants</h2>
+               
                     <StyledForm onSubmit={submitLogin}>
+                    {loginerr ? <div className="errormessage">{loginerr}</div> : null}
                         <StyledEntryBoxes>
-                        <label> Username: 
+                        <label> Username:                          </label>
                             <input 
                             type ='text' 
                             name ="username" 
                             placeholder = ''  
                             value={formValues.username} 
                             onChange={change}></input>
-                        </label>
 
-                        {errors.username && <div style = {
-                            {marginTop: '5px',
-                            marginBottom: '5px',
-                            color: 'red',
-                            backgroundColor: 'pink',
-                            width: '75.2%',
-                            border: '1px solid red'}}>{errors.username}</div>}
 
-                        <label>Password: 
+                        {errors.username && <div className="errormessage" >{errors.username}</div>}
+
+                        <label>Password:                         </label>
                         <input 
                         type = 'password' 
                         name="password" 
                         placeholder = 'Case Sensitive'  
                         value={formValues.password} 
                         onChange={change}></input>
-                        </label>
 
-                        {errors.password && <div style = {
-                            {marginTop: '5px',
-                            marginBottom: '5px',
-                            color: 'red',
-                            backgroundColor: 'pink',
-                            width: '75.2%',
-                            border: '1px solid red'}}>{errors.password}</div>}
+
+                        {errors.password && <div className="errormessage">{errors.password}</div>}
                         </StyledEntryBoxes>
                         <button 
                         type = 'submit'

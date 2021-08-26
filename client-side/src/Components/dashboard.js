@@ -26,8 +26,10 @@ const Dashboard = (props) => {
 			.then((res) => {
 				console.log("Delete success");
 				setPlants([...plants]);
+				
 				history.push("/dashboard");
 				setTrigger(!trigger);
+				props.setTrigger(!props.trigger)
 			})
 
 			.catch((err) => {
@@ -160,6 +162,10 @@ const Dashboard = (props) => {
 			border: 0;
 			cursor: pointer;
 		}
+		.message{
+			color: #3b8039;
+font-weight: bold;
+		}
 	`;
 
 	return (
@@ -175,7 +181,6 @@ const Dashboard = (props) => {
 					<StyledTable>
 						<tr>
 							<th>Species</th>
-							<th>Image</th>
 							<th>Name</th>
 							<th>H2o Interval(hrs)</th>
 							<th>H2o Amount</th>
@@ -185,7 +190,7 @@ const Dashboard = (props) => {
 							<th>Edit</th>
 							<th>Delete</th>
 						</tr>
-
+							{ plants && plants.length === 0 ? <tr  className="message"><td colSpan="10">You have no Plants Yet !</td></tr>: null}
 						 {plants &&
 							plants.map((el) => {
 								const date = new Date(Date.parse(el.lastWatered));
@@ -213,15 +218,9 @@ const Dashboard = (props) => {
 								return (
 									<tr>
 										<td>{el.speciesID}</td>
-										<td>
-											<img
-												src={process.env.PUBLIC_URL + `/${el.speciesID}.jpg`}
-												alt="logo"
-											/>
-										</td>
 										<td>{el.nickname}</td>
-										<td>{valuetostring}</td>
-										<td>{el.h2oAmount}</td>
+										<td>Every {el.h2oInterval} {Number(el.h2oInterval) === 1 ? 'Hour': 'Hours'}</td>
+										<td>{el.h2oAmount} Litre</td>
 										<td>{el.lastWatered}</td>
 
 										<td className={color}>{newdate.toLocaleString()}</td>

@@ -18,7 +18,7 @@ form{
         margin: auto;
     }
     button{
-        width: 10%;
+        width: 20%;
         margin-top: 3%;
         padding: 1rem;
         background-color: #007360;
@@ -47,6 +47,7 @@ const PlantEdit =() => {
         axiosWithAuth()
             .get(`https://wmp-api.herokuapp.com/api/plants/${id}`)  
             .then(res => {
+                console.log(res.data)
                 setPlant(res.data)
             })
             .catch(err => {
@@ -81,14 +82,14 @@ const PlantEdit =() => {
         <h2>Edit Plant Page for plant {id} </h2>
         <form className="editform" onSubmit={SavePlant}>
             <label> Name:</label>
-<input onChange={e=>handleChange(e)} type="text" name="name" value={plant.name}/>
+<input onChange={e=>handleChange(e)} type="text" name="nickname" value={plant.nickname}/>
 <label> Species:</label>
-<input  onChange={e=>handleChange(e)} type="text" name="species" value={plant.species}/>
+<input  onChange={e=>handleChange(e)} type="text" name="speciesID" value={plant.speciesID}/>
 <label> H2oAmount:</label>
-<input  onChange={e=>handleChange(e)} type="text" name="h2amount" value={plant.h2amount}/>
+<input  onChange={e=>handleChange(e)} type="text" name="h2oAmount" value={plant.h2oAmount}/>
 <label> H2oInterval:</label>
-<input  onChange={e=>handleChange(e)} type="text" name="h2ointerval" value={plant.h2ointerval}/>
-<button>Submit</button>
+<input  onChange={e=>handleChange(e)} type="text" name="h2oInterval" value={plant.h2oInterval}/>
+<button>Save Plant</button>
              </form>
     </StyledDiv>
     )

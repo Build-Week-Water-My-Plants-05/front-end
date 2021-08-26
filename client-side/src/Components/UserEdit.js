@@ -3,6 +3,33 @@ import axiosWithAuth from '../axiosWithAuth/axiosWithAuth'
 import {
     useHistory
   } from "react-router-dom";
+  import styled from 'styled-components';
+const StyledDiv = styled.div`
+color: #007360;
+border: 5px solid white;
+margin-top: 3%;
+text-align: center;
+form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    input , button{
+        width: 40%;
+        margin: auto;
+    }
+    button{
+        width: 10%;
+        margin-top: 3%;
+        padding: 1rem;
+        background-color: #007360;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+    }
+}
+`
 
 const initialValues = {
     username: '',
@@ -13,6 +40,7 @@ const initialValues = {
 const UserEdit = (props) => {
 
     const [formValues, setFormValues] = useState(initialValues)
+    const[error,setError] = useState(null)
     let history = useHistory();
 
     const submit = (e) => {
@@ -21,7 +49,7 @@ const UserEdit = (props) => {
           console.log(res.data)
           props.setUser(res.data)
           history.push('/dashboard')
-        }).catch( err => {console.log(err.response.data['message'])})
+        }).catch( err => {setError(err.response.data['message'])})
       }
 
     const change = (e)=> {
@@ -32,22 +60,26 @@ const UserEdit = (props) => {
     useEffect(()=>{
         axiosWithAuth().get('/api/users')
         .then(res => {setFormValues(res.data)})
-        .catch(e => console.log(e))
+        .catch(err => setError(err.response.data['message']))
     }
     , [])
 
     return(<div>
-        {console.log(formValues)}
+
+        <StyledDiv >
+          <h2>Edit User Information</h2>
+          {error ? <div>{error}</div>: null}
         <form onSubmit={e =>submit(e)}>
             <label>Username</label>
             <input onChange={e=>change(e)} name="username" value={formValues.username}/>
-            <label>Password</label>
-            <input type="password" onChange={e=>change(e)} name="password" value={formValues.password}/>
+            <label>New Password</label>
+            <input type="password" onChange={e=>change(e)} name="password" />
             <label>Phone No:</label>
             <input onChange={e=>change(e)} name="phoneNumber" value={formValues.phoneNumber}/>
-            <button>Submit</button>
+            <button>Edit</button>
 
         </form>
+        </StyledDiv>
     </div>)
 }
 
