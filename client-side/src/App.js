@@ -113,7 +113,7 @@ const logout = ()=> {
       <Switch>
         <Route exact path = '/' component = {Home}/>
         <Route path = '/usersignup'   render={() => <SignUp submit = {submit} formvalues = {formvalues} change = {change}  />}/>
-        <Route path = '/userlogin'   render={() => <Login submit = {submit} formvalues = {formvalues} change = {change}  />}/>
+        <Route path = '/userlogin'   render={() => <Login/>}/>
         <PrivateRoute path = '/edit/:id' component = {PlantEdit}/>
         <PrivateRoute path = '/addplant' component = {AddPlant}/>
         <PrivateRoute path = '/dashboard' component = {Dashboard}/>
