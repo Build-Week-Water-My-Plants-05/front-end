@@ -69,7 +69,7 @@ export default function SignUp (props){
                             <label>Username:</label>
                                 <input 
 
-                      name ="username" type="text" value={formvalues.username} onChange={(e)=>change(e)} />
+                      name ="username" type="text" value={formvalues.username} onChange={(e)=>change(e)} 
 
                                     type='text'
                                     placeholder=''

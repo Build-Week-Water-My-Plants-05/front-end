@@ -1,16 +1,15 @@
 import {React} from 'react'
 import { useState, useEffect } from 'react';
-import axiosWithAuth from '../axiosWithAuth/axiosWithAuth';
+import axiosWithAuth from './../axiosWithAuth/axiosWithAuth'
 import styled from 'styled-components'
 import { Link, useHistory, Route } from "react-router-dom";
-import HomeImage from "./img/img2.jpg"
+import HomeImage from "./img/img3.jpg"
 
 
 const Dashboard = (props) => {
 	const [plants,setPlants] = useState(null)
 	const [watering,setWater] = useState(null)
 	const {trigger,setTrigger} = props
-
 
 	const history = useHistory()
 
@@ -62,13 +61,13 @@ const Dashboard = (props) => {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		opacity: 0.5;
+		
 	`;
 
 	const StyledTable = styled.table`
 		margin: auto;
 		width: 50%;
-		font-family: "Comic Sans MS", cursive, sans-serif;
+		font-family: "Helvetica", cursive, sans-serif;
 		border: 2px solid #4f7849;
 		background-color: #eeeeee;
 		width: 72%;
@@ -77,7 +76,7 @@ const Dashboard = (props) => {
 		td,
 		th {
 			border: 1px solid #4f7849;
-			padding: 3px 2px;
+			padding: 8px 12px 8px 12px;
 		}
 
 		tbody td {
@@ -125,14 +124,13 @@ const Dashboard = (props) => {
 		}
 		.water {
 			padding: 1rem;
-			background: #1887dc;
-			color: white;
+			color: #7AD7F0;
 			font-weight: bold;
 			cursor: pointer;
 			width: 25px;
 			height: 25px;
 			border-radius: 0 83% 53% 80%;
-			border: 3px solid black;
+			border: 2px solid #7AD7F0;
 			transform: rotate(45deg);
 			margin-top: 12px;
 		}
@@ -169,7 +167,7 @@ const Dashboard = (props) => {
 			<Route exact path="/"></Route>
 
 			<div>
-				<h2>Dashboard</h2>
+			
 
 				<div className="tablecontainer">
 					{/* <table className="comicGreen"> */}
@@ -230,8 +228,9 @@ const Dashboard = (props) => {
 
 										<td>
 											<button
-												className="water"
-												onClick={() => water(el.plantID)}
+												className ="water"
+												
+												onClick = {() => water(el.plantID)}
 											></button>
 										</td>
 										<td>
