@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axiosWithAuth from './../axiosWithAuth/axiosWithAuth'
 import styled from 'styled-components'
 import { Link, useHistory, Route } from "react-router-dom";
-import HomeImage from "./img/img2.jpg"
+import HomeImage from "./img/img3.jpg"
 
 
 const Dashboard = (props) => {
@@ -124,14 +124,13 @@ const Dashboard = (props) => {
 		}
 		.water {
 			padding: 1rem;
-			background: #1887dc;
-			color: white;
+			color: linear-gradient(to bottom, #24C6DC, #514A9D);
 			font-weight: bold;
 			cursor: pointer;
 			width: 25px;
 			height: 25px;
 			border-radius: 0 83% 53% 80%;
-			border: 3px solid black;
+			border: 1px solid black;
 			transform: rotate(45deg);
 			margin-top: 12px;
 		}
@@ -168,7 +167,7 @@ const Dashboard = (props) => {
 			<Route exact path="/"></Route>
 
 			<div>
-				<h2>Dashboard</h2>
+			
 
 				<div className="tablecontainer">
 					{/* <table className="comicGreen"> */}
@@ -229,8 +228,9 @@ const Dashboard = (props) => {
 
 										<td>
 											<button
-												className="water"
-												onClick={() => water(el.plantID)}
+												className ="water"
+												
+												onClick = {() => water(el.plantID)}
 											></button>
 										</td>
 										<td>
