@@ -8,6 +8,7 @@ import Dashboard from './Components/dashboard';
 import PrivateRoute from './Components/PrivateRoute'
 import UserEdit from './Components/UserEdit';
 import axiosWithAuth from './axiosWithAuth/axiosWithAuth';
+import './App.css'
 import {
   Switch,
   Route,
@@ -28,13 +29,16 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 background-color: #007360;
-height: 20vh;
+height: 15vh;
 padding-left: 3%;
 padding-right: 3%;`
 
 const StyledLink = styled(Link)`
 text-decoration: none;
 color: white;
+:hover{
+  font-size: 1.1rem;
+}
 text-decoration: none;
 /* font-size: 1.5rem; */
 `;
@@ -50,14 +54,25 @@ background-color: #00957c;
 padding: 0.6rem;
 color: #d9d6d6;
 `;
+
+
+const StyledFooter = styled.div` 
+background-color: #00957c;
+padding: 1.6rem;
+color: #fff;
+margin: 0;
+text-align: center;
+font-weight: bold;
+`;
 const initialformvalues = {username: '', password: '',phoneNumber: ''}
 function App() {
   const [formvalues,setFormValues] = useState(initialformvalues)
   const[loggedin, setLoggedin] = useState(false)
-  const[trigger, setTrigger] = useState(false) 
+  const [user,setUser] = useState(null)
+
   let history = useHistory();
   let location = useLocation();
-  const [user,setUser] = useState(null)
+
   
   const change = (e)=> {
     const {value,name} = e.target
@@ -66,10 +81,9 @@ function App() {
 
   const login = () => {
     axios.post('https://wmp-api.herokuapp.com/api/auth/login', formvalues).then( res=>{
-      console.log(res.data)
       const token = res.data.token;
       localStorage.setItem('token', `"${token}"`);
-      setLoggedin(true)
+      setLoggedin(!loggedin)
       history.push('/dashboard')
     }).catch( err => console.log(err.response.data['message']))
   }
@@ -96,22 +110,31 @@ function App() {
 const logout = ()=> {
   history.push('/userlogin')
   localStorage.removeItem('token')
+  setUser(null)
   setLoggedin(false)
 }
 
 useEffect(()=>{
-  axiosWithAuth().get('/api/users')
-  .then(res => {setUser(res.data)})
-  .catch(e => console.log(e))
   if(localStorage.getItem('token')) {
+    axiosWithAuth().get('/api/users')
+    .then(res => {setUser(res.data)})
+    .catch(e => console.log(e))
     setLoggedin(true)
   }
 }
 , [])
 
+
 useEffect(()=> {
-setTrigger(!trigger)
+  if(localStorage.getItem('token')) {
+    axiosWithAuth().get('/api/users')
+    .then(res => {setUser(res.data)})
+    .catch(e => console.log(e))
+    setLoggedin(true)
+  }
 }, [loggedin])
+
+
 
   return (
     <div>
@@ -133,7 +156,7 @@ setTrigger(!trigger)
             </StyledLink> 
             <StyledLink onClick={e=>logout(e)}> <h2>Logout</h2> </StyledLink>
             <StyledMessage>
-              {user && <div><h4>Hello {user.username}</h4></div>}
+              {user && <div><h4>Hello {user.username} !</h4></div>}
               </StyledMessage>
             </>}
 
@@ -151,16 +174,17 @@ setTrigger(!trigger)
       
       <Switch>
         <Route exact path = '/' component = {Home}/>
-        <Route path = '/usersignup'   render={() => <SignUp submit = {submit} formvalues = {formvalues} change = {change}  />}/>
-        <Route path = '/userlogin'   render={() => <Login setLoggedin={setLoggedin}/>}/>
+        <Route path = '/usersignup'   render={(props) => <SignUp {...props} submit = {submit} formvalues = {formvalues} change = {change}  />}/>
+        <Route path = '/userlogin'   render={() => <Login setLoggedin={setLoggedin} loggedin = {loggedin}/>}/>
         <PrivateRoute path = '/edit/:id' component = {PlantEdit}/>
         <PrivateRoute path = '/useredit/' setUser={setUser} component = {UserEdit}/>
         <PrivateRoute path = '/addplant' component = {AddPlant}/>
-        <PrivateRoute path = '/dashboard'  component = {Dashboard}/>
+        <PrivateRoute path = '/dashboard'   component = {Dashboard}/>
         
       </Switch>
-
-     
+<StyledFooter>
+       Copyrights reserved 2021
+       </StyledFooter>
     </div>
   );
 }
