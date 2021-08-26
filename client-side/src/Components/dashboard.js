@@ -11,6 +11,7 @@ const Dashboard = (props) => {
 	const [watering,setWater] = useState(null)
 	const {trigger,setTrigger} = props
 
+
 	const history = useHistory()
 
 	useEffect(() => {

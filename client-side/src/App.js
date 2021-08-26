@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import PlantEdit from './Components/PlantEdit';
 import Dashboard from './Components/dashboard';
 import PrivateRoute from './Components/PrivateRoute'
+import UserEdit from './Components/UserEdit';
+import axiosWithAuth from './axiosWithAuth/axiosWithAuth';
 import {
   Switch,
   Route,
@@ -33,19 +35,28 @@ padding-right: 3%;`
 const StyledLink = styled(Link)`
 text-decoration: none;
 color: white;
-text-decoration: underline;
+text-decoration: none;
+/* font-size: 1.5rem; */
 `;
 
 const StyledAccountButtons = styled.div`
 display: flex;
 justify-content: space-around;
-width: 100px;
+width: 50%;
+`;
+
+const StyledMessage = styled.div` 
+background-color: #00957c;
+padding: 0.6rem;
+color: #d9d6d6;
 `;
 const initialformvalues = {username: '', password: '',phoneNumber: ''}
 function App() {
   const [formvalues,setFormValues] = useState(initialformvalues)
+  const[loggedin, setLoggedin] = useState(false) 
   let history = useHistory();
   let location = useLocation();
+  const [user,setUser] = useState(null)
   
   const change = (e)=> {
     const {value,name} = e.target
@@ -57,6 +68,7 @@ function App() {
       console.log(res.data)
       const token = res.data.token;
       localStorage.setItem('token', `"${token}"`);
+      setLoggedin(true)
       history.push('/dashboard')
     }).catch( err => console.log(err.response.data['message']))
   }
@@ -83,7 +95,18 @@ function App() {
 const logout = ()=> {
   history.push('/userlogin')
   localStorage.removeItem('token')
+  setLoggedin(false)
 }
+
+useEffect(()=>{
+  axiosWithAuth().get('/api/users')
+  .then(res => {setUser(res.data)})
+  .catch(e => console.log(e))
+  if(localStorage.getItem('token')) {
+    setLoggedin(true)
+  }
+}
+, [])
 
   return (
     <div>
@@ -93,19 +116,30 @@ const logout = ()=> {
           <StyledLink to = '/'><h1>Watery-Minder</h1></StyledLink> 
 
           <StyledAccountButtons>
-            <StyledLink onClick={e=>logout(e)}>Logout</StyledLink>
-            <StyledLink to = '/usersignup'>
-             <h5>Sign Up</h5> 
-            </StyledLink> 
-
-            <StyledLink to = '/userlogin' >
-            <h5>Login</h5>
-            </StyledLink>
-
+            {loggedin && <> 
             <StyledLink to = '/addplant' >
-            <h5>Add Plant</h5>
+            <h2>Add Plant</h2>
             </StyledLink>
+            <StyledLink to = '/dashboard' >
+            <h2>Dashboard</h2>
+            </StyledLink>
+            <StyledLink to = '/useredit'>
+             <h2>Edit Information</h2> 
+            </StyledLink> 
+            <StyledLink onClick={e=>logout(e)}> <h2>Logout</h2> </StyledLink>
+            <StyledMessage>
+              {user && <div><h4>Hello {user.username}</h4></div>}
+              </StyledMessage>
+            </>}
 
+            {!loggedin && <>
+            <StyledLink to = '/userlogin' >
+            <h2>Login</h2>
+            </StyledLink> 
+            <StyledLink to = '/usersignup'>
+             <h2>Sign Up</h2> 
+            </StyledLink> 
+ </> }
           </StyledAccountButtons>
 
       </StyledHeader>
@@ -115,8 +149,9 @@ const logout = ()=> {
         <Route path = '/usersignup'   render={() => <SignUp submit = {submit} formvalues = {formvalues} change = {change}  />}/>
         <Route path = '/userlogin'   render={() => <Login submit = {submit} formvalues = {formvalues} change = {change}  />}/>
         <PrivateRoute path = '/edit/:id' component = {PlantEdit}/>
+        <PrivateRoute path = '/useredit/' setUser={setUser} component = {UserEdit}/>
         <PrivateRoute path = '/addplant' component = {AddPlant}/>
-        <PrivateRoute path = '/dashboard' component = {Dashboard}/>
+        <PrivateRoute path = '/dashboard'  component = {Dashboard}/>
         
       </Switch>
 
