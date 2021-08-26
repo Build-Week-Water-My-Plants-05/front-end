@@ -61,7 +61,7 @@ const Dashboard = (props) => {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		opacity: 0.5;
+		
 	`;
 
 	const StyledTable = styled.table`
@@ -76,7 +76,7 @@ const Dashboard = (props) => {
 		td,
 		th {
 			border: 1px solid #4f7849;
-			padding: 3px 2px;
+			padding: 8px 12px 8px 12px;
 		}
 
 		tbody td {
@@ -124,13 +124,13 @@ const Dashboard = (props) => {
 		}
 		.water {
 			padding: 1rem;
-			color: linear-gradient(to bottom, #24C6DC, #514A9D);
+			color: #7ad7f0;
 			font-weight: bold;
 			cursor: pointer;
 			width: 25px;
 			height: 25px;
 			border-radius: 0 83% 53% 80%;
-			border: 1px solid black;
+			border: 2px solid #7ad7f0;
 			transform: rotate(45deg);
 			margin-top: 12px;
 		}
@@ -152,13 +152,11 @@ const Dashboard = (props) => {
 		}
 		.delete {
 			color: red;
-			background: #ff9999b0;
 			font-weight: bold;
-			border-radius: 50%;
 			font-size: 1rem;
 			padding: 0.6rem;
 			border: 0;
-			cursor: pointer;
+			
 		}
 	`;
 
