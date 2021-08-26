@@ -1,6 +1,6 @@
 import {React} from 'react'
 import { useState, useEffect } from 'react';
-import axiosWithAuth from '../axiosWithAuth/axiosWithAuth';
+import axiosWithAuth from './../axiosWithAuth/axiosWithAuth'
 import styled from 'styled-components'
 import { Link, useHistory, Route } from "react-router-dom";
 import HomeImage from "./img/img2.jpg"
@@ -10,7 +10,6 @@ const Dashboard = (props) => {
 	const [plants,setPlants] = useState(null)
 	const [watering,setWater] = useState(null)
 	const {trigger,setTrigger} = props
-
 
 	const history = useHistory()
 
@@ -68,7 +67,7 @@ const Dashboard = (props) => {
 	const StyledTable = styled.table`
 		margin: auto;
 		width: 50%;
-		font-family: "Comic Sans MS", cursive, sans-serif;
+		font-family: "Helvetica", cursive, sans-serif;
 		border: 2px solid #4f7849;
 		background-color: #eeeeee;
 		width: 72%;
