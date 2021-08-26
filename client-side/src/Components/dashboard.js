@@ -124,13 +124,13 @@ const Dashboard = (props) => {
 		}
 		.water {
 			padding: 1rem;
-			color: #7ad7f0;
+			color: #7AD7F0;
 			font-weight: bold;
 			cursor: pointer;
 			width: 25px;
 			height: 25px;
 			border-radius: 0 83% 53% 80%;
-			border: 2px solid #7ad7f0;
+			border: 2px solid #7AD7F0;
 			transform: rotate(45deg);
 			margin-top: 12px;
 		}
@@ -152,11 +152,13 @@ const Dashboard = (props) => {
 		}
 		.delete {
 			color: red;
+			background: #ff9999b0;
 			font-weight: bold;
+			border-radius: 50%;
 			font-size: 1rem;
 			padding: 0.6rem;
 			border: 0;
-			
+			cursor: pointer;
 		}
 	`;
 
