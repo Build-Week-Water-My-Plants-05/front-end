@@ -83,7 +83,7 @@ const loginSchema = yup.object().shape({
 
 
 
-const Login = () => {
+const Login = (props) => {
 
     //     //Set up or slices of state//
     const [ formValues, setFormValues ] = useState(initialFormValues);
@@ -112,6 +112,7 @@ const Login = () => {
           console.log(res.data)
           const token = res.data.token;
           localStorage.setItem('token', `"${token}"`);
+          props.setLoggedin(true)
           history.push('/dashboard')
         }).catch( err => console.log(err.response.data['message']))
       }
