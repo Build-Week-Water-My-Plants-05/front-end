@@ -1,6 +1,7 @@
 # front-end
 
 
+
 🌿🌿🌿🌿🌿🌿 WATERY MINDER 🌿🌿🌿🌿🌿🌿
 
 
@@ -16,6 +17,14 @@ The user will be able to sign up, input their information and their plants infor
 
 What is the mission statement?
 Don’t let your plants die of thirst
+
+
+### Task 1: Transfer Repo
+* Clone this repository.
+* Implement the project on your newly created <firstName-lastName> branch, committing changes regularly.
+* Push commits: git push origin <firstName-lastName>.
+* RUN npm install to install your dependencies.
+* RUN npm start to start your application.
 	
 	
 
